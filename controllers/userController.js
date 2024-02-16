@@ -1,6 +1,6 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt")
+// const bcrypt = require("bcrypt")
 const User = require("../model/userModel");
 const { generateToken } = require("../config/jwttoken");
 const Stripe = require("stripe")
@@ -23,14 +23,15 @@ const signup = async (req, res) => {
       }
 
       // Generate salt and hash the password
-      const salt = await bcrypt.genSalt(10);
-      const hashedPassword = await bcrypt.hash(password, salt);
+      // const salt = await bcrypt.genSalt(10);
+      // const hashedPassword = await bcrypt.hash(password, salt);
 
       // Create a new user instance
       const newUser = new User({
         username,
         email,
-        password: hashedPassword,
+        // password: hashedPassword,
+        password,
         phonenumber,
         college,
         passingyear,
@@ -74,13 +75,21 @@ const signin = async (req, res) => {
         .json({ error: "Invalid email/phone number or password" });
     }
     // Check if the provided password matches the stored hashed password
-    const passwordMatch = await bcrypt.compare(password, user.password);
-    console.log(passwordMatch);
+    // const passwordMatch = await bcrypt.compare(password, user.password);
+    // console.log(passwordMatch);
+    // if (!passwordMatch) {
+    //   return res
+    //     .status(401)
+    //     .json({ error: "Invalid email/phone number or password" });
+    // }
+    const passwordMatch = password === user.password;
+    console.log(password)
     if (!passwordMatch) {
-      return res
-        .status(401)
-        .json({ error: "Invalid email/phone number or password" });
-    }
+        return res
+          .status(401)
+          .json({ error: "Invalid email/phone number or password" });
+      }
+
 
     // Generate JWT token
     const token = generateToken(user._id);
