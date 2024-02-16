@@ -14,7 +14,7 @@ app.use(bodyparser.urlencoded({ extended: false }))
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
-    origin: ['*', 'https://m.stripe.network', 'https://js.stripe.com', "http://localhost:5173","https://stripe-payments-app.herokuapp.com","https://stripe.com/" ]
+    origin: ['*', 'https://m.stripe.network', 'https://js.stripe.com', "http://localhost:5173","https://stripe-payments-app.herokuapp.com","https://stripe.com/" , "https://prepbytes-backend-server.onrender.com"]
   }));
 //database
 const {dbconnect} = require("./config/dbconnect")
