@@ -187,7 +187,7 @@ const createCheckOutSession = async (req, res) => {
   }
     purchaseCourse = products;
     // console.log(purchaseCourse);
-
+  console.log(req.headers)
 
     const lineItems = [products].map((product) => ({
       price_data: {
