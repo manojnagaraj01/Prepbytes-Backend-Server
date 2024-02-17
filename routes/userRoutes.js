@@ -7,7 +7,7 @@ route.post("/signup", signup)
 route.post("/signin", signin)
 
 route.post("/create-checkout-session", createCheckOutSession)
-route.post("/create-order", order)
+route.get("/create-order", order)
 route.post("/get-course-offer", offer)
 route.post("/enquiry-form", enquiryform)
 

@@ -218,7 +218,9 @@ const createCheckOutSession = async (req, res) => {
 
 const order = async (req, res) => {
   let purchaseCourse = {};
-  let email = req.query.email;
+  // let email = req.query.email;
+  let email = req.body.email;
+  console.log(email)
   let checkUser = await User.findOne({ email: email });
   if (checkUser) {
     let data = {};
