@@ -13,9 +13,12 @@ app.use(bodyparser.json())
 app.use(bodyparser.urlencoded({ extended: false }))
 app.use(express.json())
 app.use(cookieParser())
+// app.use(cors({
+//     origin: ['*', 'https://m.stripe.network', 'https://js.stripe.com', "http://localhost:5173","https://stripe-payments-app.herokuapp.com","https://stripe.com/" , "https://prepbytes-backend-server.onrender.com", "https://prepbytes-clone-three.vercel.app", "https://prepbytes-backend-server.onrender.com/user/create-checkout-session", "https://prepbytes-backend-server.onrender.com/user/create-order", "https://prepbytes-backend-server.onrender.com/user/create-order",]
+//   }));
 app.use(cors({
-    origin: ['*', 'https://m.stripe.network', 'https://js.stripe.com', "http://localhost:5173","https://stripe-payments-app.herokuapp.com","https://stripe.com/" , "https://prepbytes-backend-server.onrender.com", "https://prepbytes-clone-three.vercel.app", "https://prepbytes-backend-server.onrender.com/user/create-checkout-session", "https://prepbytes-backend-server.onrender.com/user/create-order", "https://prepbytes-backend-server.onrender.com/user/create-order",]
-  }));
+    origin:'*'
+}))
 //database
 const {dbconnect} = require("./config/dbconnect")
 
